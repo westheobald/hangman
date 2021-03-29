@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <title>Hangman</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Let's play hangman!</h1>
+
+    <div class="stickFigure">
+      <canvas id="hangman" width="50" height="100"></canvas>
+      <div id="description"></div>
+    </div>
+    <div id="letter"></div>
+    <div class="controls">
+      <div>Enter a letter:</div>
+      <div class="inputLetter">
+        <input type="text" class="guess" />
+        <button class="btn again">Play Again?</button>
+      </div>
+    </div>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>
