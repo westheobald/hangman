@@ -26,13 +26,6 @@ function getLetters() {
     element.appendChild(document.createTextNode(""));
     document.getElementById("letter").appendChild(element);
   }
-
-  if (answer.length < 6) {
-    document.getElementById("letter").style.maxWidth = "80%";
-    document.getElementById("letter").style.margin = "0 auto";
-  } else {
-    document.getElementById("letter").style.maxWidth = "100%";
-  }
 }
 getLetters();
 
@@ -117,14 +110,31 @@ document.querySelector(".guess").addEventListener("keyup", function () {
   if (points === answer.length) {
     document.querySelector("#description").textContent = "YOU WIN!!";
     document.querySelector("body").style.backgroundColor = "rgb(0, 58, 3)";
-    document.querySelector(".again").style.visibility = "visible";
+    document.querySelector(".instructions").style.display = "none";
+    document.querySelector(".guess").style.display = "none";
+    document.querySelector(".again").style.display = "block";
+    document.querySelector(".instructions").classList.add = "hidden";
+    document.querySelector(".guess").classList.add = "hidden";
   }
 
   if (currentDeath === 0) {
+    for (let i = 0; i < answer.length; i++) {
+      if (
+        document.querySelector(`.letter${i}`).textContent !=
+        answer[i].toUpperCase()
+      ) {
+        document.querySelector(`.letter${i}`).textContent =
+          answer[i].toUpperCase();
+        document.querySelector(`.letter${i}`).style.backgroundColor =
+          "rgba(139, 0, 0, 0.918)";
+      }
+    }
     document.querySelector("body").style.backgroundColor =
       "rgba(71, 0, 0, 0.918)";
+    document.querySelector(".instructions").style.display = "none";
+    document.querySelector(".guess").style.display = "none";
     document.querySelector("#description").textContent = "YOU LOSE.";
-    document.querySelector(".again").style.visibility = "visible";
+    document.querySelector(".again").style.display = "block";
   }
 });
 
@@ -135,7 +145,9 @@ document.querySelector(".again").addEventListener("click", function () {
   document.querySelector("#description").textContent = "";
   document.querySelector(".guess").value = "";
   document.querySelector("body").style.backgroundColor = "#333";
-  document.querySelector(".again").style.visibility = "collapse";
+  document.querySelector(".again").style.display = "none";
+  document.querySelector(".instructions").style.display = "block";
+  document.querySelector(".guess").style.display = "initial";
 
   while (letterDiv.hasChildNodes()) {
     letterDiv.removeChild(letterDiv.firstChild);
