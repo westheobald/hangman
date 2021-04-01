@@ -34,6 +34,7 @@ let ctx = c.getContext("2d");
 
 document.querySelector(".guess").addEventListener("keyup", function () {
   let guess = document.querySelector(".guess").value.toLowerCase();
+  document.querySelector(".guess").value = "";
   const alphabet = "abcdefghijklmnopqrstuvwxyz";
 
   if (
